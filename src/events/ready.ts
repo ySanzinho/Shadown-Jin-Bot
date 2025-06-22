@@ -8,8 +8,6 @@ module.exports = {
   once: true,
 
   async execute(client: ExtendedClient) {
-    console.log(`✅ ${client.user?.tag} está online!`);
-
     const commands = client.commands.map(cmd => cmd.data.toJSON());
     const rest = new REST({ version: "10" }).setToken(process.env.BOT_TOKEN!);
 
@@ -27,5 +25,6 @@ module.exports = {
     } catch (error) {
       console.error("❌ Erro ao registrar os slash commands:", error);
     }
+    console.log(`✅ ${client.user?.tag} está online!`);
   }
 }
